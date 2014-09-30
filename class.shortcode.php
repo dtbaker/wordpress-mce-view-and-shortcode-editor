@@ -77,7 +77,7 @@ class dtbaker_Shortcode_Banner {
 		die();
 	}
 	public function mce_plugin($plugin_array){
-		$plugin_array['dtbaker_mce'] = admin_url('admin-ajax.php?action=dtbaker_mce_banner_button');
+		$plugin_array['dtbaker_mce_banner'] = admin_url('admin-ajax.php?action=dtbaker_mce_banner_button');
 		return $plugin_array;
 	}
 	public function mce_button($buttons){
