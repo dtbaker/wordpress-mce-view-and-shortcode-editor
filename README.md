@@ -17,6 +17,6 @@ This file converts a plain WordPress shortcode....
 
 ![edit wordpress shortcode in popup](http://i.imgur.com/Q0pnFN2.png)
 
-.. also adds a button for inserting new shortcode easily:
+.. also adds a button for inserting a new shortcode:
 
 ![tinymce shortcode insert button](http://i.imgur.com/Qv0bO1h.png)
