@@ -1,0 +1,37 @@
+
+.full_banner{
+    clear:both;
+    margin: 10px 0 2em 0;
+    padding: 7px 8px 0 8px;
+    background-image: url(images/dot-box-left.png), url(images/dot-box-right.png), url(images/dot-box-tile.png);
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: left top, right top, left top;
+    background-origin: border-box,border-box,padding-box;
+    background-clip: border-box,border-box,padding-box;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    background-size: 12px 33px, 12px 33px, 3px 33px;
+    height: 33px;
+}
+.full_banner .link{
+    float:right;
+}
+.full_banner .title{
+    font-size: 1.4em;
+    margin: 0px 8px 0 0px;
+    font-weight: normal;
+    display: inline-block;
+    float: left;
+    padding: 0;
+    background: url(images/bird-yellow.png) no-repeat top left;
+    background-size: 25px 23px;
+    padding-left: 37px;
+}
+.full_banner .content{
+    font-size: 1.4em;
+    margin: 1px 0 0 0px;
+    display: inline-block;
+    float: left;
+    padding: 0;
+    color: #5799a7;
+}
