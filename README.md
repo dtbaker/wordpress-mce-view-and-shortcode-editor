@@ -1,3 +1,5 @@
+note: this will stop working in WordPress 4.2 ( April 2015 ). New code will be added once 4.2 RC is out. 
+
 WordPress custom TinyMCE view and shortcode editor
 =======================================
 
