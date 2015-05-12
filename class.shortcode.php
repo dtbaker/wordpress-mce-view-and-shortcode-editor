@@ -115,7 +115,14 @@ class dtbaker_Shortcode_Banner {
 			    wp.mce = wp.mce || {};
 			    wp.mce.boutique_banner = {
 				    shortcode_data: {},
+				    template: media.template( 'editor-boutique-banner' ),
+				    getContent: function() {
+							var options = this.shortcode.attrs.named;
+							options['innercontent'] = this.shortcode.content;
+							return this.template(options);
+						},
 					View: {
+						// before WP 4.2:
 						template: media.template( 'editor-boutique-banner' ),
 						postID: $('#post_ID').val(),
 						initialize: function( options ) {
@@ -129,12 +136,9 @@ class dtbaker_Shortcode_Banner {
 							return this.template(options);
 						}
 					},
-				    edit: function( node ) {
-						var data = window.decodeURIComponent( $( node ).attr('data-wpview-text') );
-					    console.debug(this);
+				    edit: function( data, update ) {
 					    var values = this.shortcode_data.attrs.named;
 						values['innercontent'] = this.shortcode_data.content;
-					    console.log(values);
 
 					    wp.mce.boutique_banner.popupwindow(tinyMCE.activeEditor, values);
 						//$( node ).attr( 'data-wpview-text', window.encodeURIComponent( shortcode ) );
