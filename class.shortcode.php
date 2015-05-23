@@ -137,11 +137,10 @@ class dtbaker_Shortcode_Banner {
 						}
 					},
 				    edit: function( data, update ) {
-					    var values = this.shortcode_data.attrs.named;
-						values['innercontent'] = this.shortcode_data.content;
-
+				    	var shortcode_data = wp.shortcode.next(shortcode_string, data);
+					    var values = shortcode_data.shortcode.attrs.named;
+						values['innercontent'] = shortcode_data.shortcode.content;
 					    wp.mce.boutique_banner.popupwindow(tinyMCE.activeEditor, values);
-						//$( node ).attr( 'data-wpview-text', window.encodeURIComponent( shortcode ) );
 					},
 				    // this is called from our tinymce plugin, also can call from our "edit" function above
 				    // wp.mce.boutique_banner.popupwindow(tinyMCE.activeEditor, "bird");
