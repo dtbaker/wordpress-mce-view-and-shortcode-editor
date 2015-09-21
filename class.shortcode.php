@@ -79,7 +79,7 @@ class dtbaker_Shortcode_Banner {
     public function print_media_templates() {
         if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
             return;
-        include_once __DIR__.'/templates/tmpl-editor-boutique-banner.html'
+        include_once __DIR__.'/templates/tmpl-editor-boutique-banner.html';
     }
     public function admin_print_footer_scripts() {
         if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
