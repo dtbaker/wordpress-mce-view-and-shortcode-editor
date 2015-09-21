@@ -62,7 +62,7 @@ class dtbaker_Shortcode_Banner {
 
 	public function wp_ajax_dtbaker_mce_banner_button(){
 		header("Content-type: text/javascript");
-		include_once __DIR__.'/js/mce_button.inline.js';
+		include_once __DIR__.'/js/mce-button-boutique-banner-inline.js';
 		die();
 	}
 	public function mce_plugin($plugin_array){
