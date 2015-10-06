@@ -56,7 +56,7 @@ class dtbaker_Shortcode_Banner {
 
 		// Use Output Buffering feature to have PHP use it's own enging for templating
 	    ob_start();
-	    include_once __DIR__.'/views/dtbaker_shortcode_banner_view.php';
+	    include __DIR__.'/views/dtbaker_shortcode_banner_view.php';
 	    return ob_get_clean();
 	}
 
