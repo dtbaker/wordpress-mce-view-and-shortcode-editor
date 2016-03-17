@@ -23,7 +23,7 @@
 				return this.template(options);
 			}
 		},
-		edit: function( data, update ) {
+		edit: function( data ) {
 			var shortcode_data = wp.shortcode.next(shortcode_string, data);
 			var values = shortcode_data.shortcode.attrs.named;
 			values.innercontent = shortcode_data.shortcode.content;
