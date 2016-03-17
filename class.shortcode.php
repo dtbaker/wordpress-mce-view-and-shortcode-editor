@@ -81,9 +81,11 @@ class dtbaker_Shortcode_Banner {
             return;
         include_once __DIR__.'/templates/tmpl-editor-boutique-banner.html';
     }
-        if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
-            return;
     public function admin_head() {
+		$current_screen = get_current_screen();
+		if ( ! isset( $current_screen->id ) || $current_screen->base !== 'post' ) {
+			return;
+		}
 
 		wp_enqueue_script( 'boutique-banner-editor-view', plugins_url( 'js/boutique-banner-editor-view.js', __FILE__ ), array( 'wp-util', 'jquery' ), false, true );
     }
