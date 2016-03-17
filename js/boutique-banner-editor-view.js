@@ -42,7 +42,7 @@
 							content : e.data.innercontent,
 							attrs : {
 								title    : e.data.title,
-								link     : e.data.linkhref,
+								link     : e.data.link,
 								linkhref : e.data.linkhref
 							}
 						};
