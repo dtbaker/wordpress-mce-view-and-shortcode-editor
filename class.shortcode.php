@@ -60,13 +60,8 @@ class dtbaker_Shortcode_Banner {
 	    return ob_get_clean();
 	}
 
-	public function wp_ajax_dtbaker_mce_banner_button(){
-		header("Content-type: text/javascript");
-		include_once __DIR__.'/js/mce-button-boutique-banner-inline.js';
-		die();
-	}
 	public function mce_plugin($plugin_array){
-		$plugin_array['dtbaker_mce_banner'] = admin_url('admin-ajax.php?action=dtbaker_mce_banner_button');
+		$plugin_array['dtbaker_mce_banner'] = plugins_url( 'js/mce-button-boutique-banner-inline.js', __FILE__ );
 		return $plugin_array;
 	}
 	public function mce_button($buttons){
