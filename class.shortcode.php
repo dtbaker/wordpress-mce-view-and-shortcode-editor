@@ -52,7 +52,7 @@ class dtbaker_Shortcode_Banner {
     		$atts
 	    );
 	    $sc_atts['banner_id'] = strtolower(preg_replace('#\W+#','', $sc_atts['title'])); // lets put everything in the view-data object
-	    $sc_atts = json_decode( json_encode( $sc_atts ) ); // slightly evil way of making $sc_atts an object
+	    $sc_atts = (object) $sc_atts;
 
 		// Use Output Buffering feature to have PHP use it's own enging for templating
 	    ob_start();
