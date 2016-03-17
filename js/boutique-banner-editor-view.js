@@ -1,3 +1,4 @@
+/* global tinyMCE */
 (function($){
 	var media = wp.media, shortcode_string = 'boutique_banner';
 	wp.mce = wp.mce || {};
@@ -32,7 +33,7 @@
 		// wp.mce.boutique_banner.popupwindow(tinyMCE.activeEditor, "bird");
 		popupwindow: function(editor, values, onsubmit_callback){
 			values = values || [];
-			if(typeof onsubmit_callback != 'function'){
+			if(typeof onsubmit_callback !== 'function'){
 				onsubmit_callback = function( e ) {
 					// Insert content when the window form is submitted (this also replaces during edit, handy!)
 					var args = {
