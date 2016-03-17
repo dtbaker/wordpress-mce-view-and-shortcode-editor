@@ -33,7 +33,7 @@ class dtbaker_Shortcode_Banner {
 		//
     	if ( current_user_can('edit_posts') || current_user_can('edit_pages') ) {
 			add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
-			add_action( 'admin_print_footer_scripts', array( $this, 'admin_print_footer_scripts' ), 100 );
+			add_action( 'admin_head', array( $this, 'admin_head' ) );
 			add_action( 'wp_ajax_dtbaker_mce_banner_button', array( $this, 'wp_ajax_dtbaker_mce_banner_button' ) );
 			add_filter("mce_external_plugins", array($this, 'mce_plugin'));
 			add_filter("mce_buttons", array($this, 'mce_button'));
@@ -81,10 +81,11 @@ class dtbaker_Shortcode_Banner {
             return;
         include_once __DIR__.'/templates/tmpl-editor-boutique-banner.html';
     }
-    public function admin_print_footer_scripts() {
         if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
             return;
-        include_once __DIR__.'/templates/script-editor-boutique-banner.html';
+    public function admin_head() {
+
+		wp_enqueue_script( 'boutique-banner-editor-view', plugins_url( 'js/boutique-banner-editor-view.js', __FILE__ ), array( 'wp-util', 'jquery' ), false, true );
     }
 }
 

@@ -1,4 +1,3 @@
-<script type="text/javascript">
 (function($){
 	var media = wp.media, shortcode_string = 'boutique_banner';
 	wp.mce = wp.mce || {};
@@ -84,4 +83,3 @@
 	};
 	wp.mce.views.register( shortcode_string, wp.mce.boutique_banner );
 }(jQuery));
-</script>
