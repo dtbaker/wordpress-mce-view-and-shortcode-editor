@@ -35,18 +35,17 @@
 			if(typeof onsubmit_callback != 'function'){
 				onsubmit_callback = function( e ) {
 					// Insert content when the window form is submitted (this also replaces during edit, handy!)
-					var s = '[' + shortcode_string;
-					for(var i in e.data){
-						if(e.data.hasOwnProperty(i) && i != 'innercontent'){
-							s += ' ' + i + '="' + e.data[i] + '"';
-						}
-					}
-					s += ']';
-					if(typeof e.data.innercontent != 'undefined'){
-						s += e.data.innercontent;
-						s += '[/' + shortcode_string + ']';
-					}
-					editor.insertContent( s );
+					var args = {
+							tag     : shortcode_string,
+							type    : e.data.innercontent.length ? 'closed' : 'single',
+							content : e.data.innercontent,
+							attrs : {
+								title    : e.data.title,
+								link     : e.data.linkhref,
+								linkhref : e.data.linkhref
+							}
+						};
+					editor.insertContent( wp.shortcode.string( args ) );
 				};
 			}
 			editor.windowManager.open( {

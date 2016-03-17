@@ -87,7 +87,7 @@ class dtbaker_Shortcode_Banner {
 			return;
 		}
 
-		wp_enqueue_script( 'boutique-banner-editor-view', plugins_url( 'js/boutique-banner-editor-view.js', __FILE__ ), array( 'wp-util', 'jquery' ), false, true );
+		wp_enqueue_script( 'boutique-banner-editor-view', plugins_url( 'js/boutique-banner-editor-view.js', __FILE__ ), array( 'shortcode', 'wp-util', 'jquery' ), false, true );
     }
 }
 
