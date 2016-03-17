@@ -33,7 +33,7 @@ class dtbaker_Shortcode_Banner {
 		//
     	if ( current_user_can('edit_posts') || current_user_can('edit_pages') ) {
 			add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
-			add_action( 'admin_print_footer_scripts', array( $this, 'admin_print_footer_scripts' ), 100 );
+			add_action( 'admin_head', array( $this, 'admin_head' ) );
 			add_action( 'wp_ajax_dtbaker_mce_banner_button', array( $this, 'wp_ajax_dtbaker_mce_banner_button' ) );
 			add_filter("mce_external_plugins", array($this, 'mce_plugin'));
 			add_filter("mce_buttons", array($this, 'mce_button'));
@@ -52,21 +52,16 @@ class dtbaker_Shortcode_Banner {
     		$atts
 	    );
 	    $sc_atts['banner_id'] = strtolower(preg_replace('#\W+#','', $sc_atts['title'])); // lets put everything in the view-data object
-	    $sc_atts = json_decode( json_encode( $sc_atts ) ); // slightly evil way of making $sc_atts an object
+	    $sc_atts = (object) $sc_atts;
 
 		// Use Output Buffering feature to have PHP use it's own enging for templating
 	    ob_start();
-	    include __DIR__.'/views/dtbaker_shortcode_banner_view.php';
+	    include dirname(__FILE__).'/views/dtbaker_shortcode_banner_view.php';
 	    return ob_get_clean();
 	}
 
-	public function wp_ajax_dtbaker_mce_banner_button(){
-		header("Content-type: text/javascript");
-		include_once __DIR__.'/js/mce-button-boutique-banner-inline.js';
-		die();
-	}
 	public function mce_plugin($plugin_array){
-		$plugin_array['dtbaker_mce_banner'] = admin_url('admin-ajax.php?action=dtbaker_mce_banner_button');
+		$plugin_array['dtbaker_mce_banner'] = plugins_url( 'js/mce-button-boutique-banner-inline.js', __FILE__ );
 		return $plugin_array;
 	}
 	public function mce_button($buttons){
@@ -79,12 +74,15 @@ class dtbaker_Shortcode_Banner {
     public function print_media_templates() {
         if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
             return;
-        include_once __DIR__.'/templates/tmpl-editor-boutique-banner.html';
+        include_once dirname(__FILE__).'/templates/tmpl-editor-boutique-banner.html';
     }
-    public function admin_print_footer_scripts() {
-        if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
-            return;
-        include_once __DIR__.'/templates/script-editor-boutique-banner.html';
+    public function admin_head() {
+		$current_screen = get_current_screen();
+		if ( ! isset( $current_screen->id ) || $current_screen->base !== 'post' ) {
+			return;
+		}
+
+		wp_enqueue_script( 'boutique-banner-editor-view', plugins_url( 'js/boutique-banner-editor-view.js', __FILE__ ), array( 'shortcode', 'wp-util', 'jquery' ), false, true );
     }
 }
 
