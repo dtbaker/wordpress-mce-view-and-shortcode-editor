@@ -66,6 +66,7 @@
 					},
 					{
 						type: 'textbox',
+						subtype: 'url',
 						name: 'linkhref',
 						label: 'Button URL',
 						value: values.linkhref
