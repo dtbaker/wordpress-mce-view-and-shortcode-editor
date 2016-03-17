@@ -56,7 +56,7 @@ class dtbaker_Shortcode_Banner {
 
 		// Use Output Buffering feature to have PHP use it's own enging for templating
 	    ob_start();
-	    include __DIR__.'/views/dtbaker_shortcode_banner_view.php';
+	    include dirname(__FILE__).'/views/dtbaker_shortcode_banner_view.php';
 	    return ob_get_clean();
 	}
 
@@ -74,7 +74,7 @@ class dtbaker_Shortcode_Banner {
     public function print_media_templates() {
         if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
             return;
-        include_once __DIR__.'/templates/tmpl-editor-boutique-banner.html';
+        include_once dirname(__FILE__).'/templates/tmpl-editor-boutique-banner.html';
     }
     public function admin_head() {
 		$current_screen = get_current_screen();
