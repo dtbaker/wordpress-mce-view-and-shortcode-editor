@@ -6,7 +6,7 @@
 		template: media.template( 'editor-boutique-banner' ),
 		getContent: function() {
 			var options = this.shortcode.attrs.named;
-			options['innercontent'] = this.shortcode.content;
+			options.innercontent = this.shortcode.content;
 			return this.template(options);
 		},
 		View: { // before WP 4.2:
@@ -18,14 +18,14 @@
 			},
 			getHtml: function() {
 				var options = this.shortcode.attrs.named;
-				options['innercontent'] = this.shortcode.content;
+				options.innercontent = this.shortcode.content;
 				return this.template(options);
 			}
 		},
 		edit: function( data, update ) {
 			var shortcode_data = wp.shortcode.next(shortcode_string, data);
 			var values = shortcode_data.shortcode.attrs.named;
-			values['innercontent'] = shortcode_data.shortcode.content;
+			values.innercontent = shortcode_data.shortcode.content;
 			wp.mce.boutique_banner.popupwindow(tinyMCE.activeEditor, values);
 		},
 		// this is called from our tinymce plugin, also can call from our "edit" function above
@@ -56,25 +56,25 @@
 						type: 'textbox',
 						name: 'title',
 						label: 'Title',
-						value: values['title']
+						value: values.title
 					},
 					{
 						type: 'textbox',
 						name: 'link',
 						label: 'Button Text',
-						value: values['link']
+						value: values.link
 					},
 					{
 						type: 'textbox',
 						name: 'linkhref',
 						label: 'Button URL',
-						value: values['linkhref']
+						value: values.linkhref
 					},
 					{
 						type: 'textbox',
 						name: 'innercontent',
 						label: 'Content',
-						value: values['innercontent']
+						value: values.innercontent
 					}
 				],
 				onsubmit: onsubmit_callback
