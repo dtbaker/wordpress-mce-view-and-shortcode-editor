@@ -51,6 +51,7 @@ class dtbaker_Shortcode_Banner {
     		),
     		$atts
 	    );
+	    $sc_atts['innercontent'] = $innercontent;
 	    $sc_atts['banner_id'] = strtolower(preg_replace('#\W+#','', $sc_atts['title'])); // lets put everything in the view-data object
 	    $sc_atts = (object) $sc_atts;
 
